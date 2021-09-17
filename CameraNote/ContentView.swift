@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+struct Note: Identifiable {
+    let id: UUID = UUID()
+    let image: UIImage
+}
+
 struct ContentView: View {
 
     let title: String
@@ -14,17 +19,18 @@ struct ContentView: View {
     @State private var showingImagePicker = false
 
     @State private var pickedImage: UIImage?
-    @State private var currentlyDisplayedImage: UIImage?
+
+    @State private var notes: [Note] = []
 
     var body: some View {
         NavigationView {
-            VStack {
-                if let image = currentlyDisplayedImage {
-                    Image(uiImage: image)
-                        .resizable()
-                }
-                List(0...100, id: \.self) { number in
-                    Text("item \(number)")
+            ScrollView {
+                LazyVGrid(columns: [.init(.adaptive(minimum: 75, maximum: 150))]) {
+                    ForEach(notes) { note in
+                        Image(uiImage: note.image)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                    }
                 }
             }
             .navigationTitle(title)
@@ -45,7 +51,9 @@ struct ContentView: View {
 
     func loadImage() {
         guard let pickedImage = pickedImage else { return }
-        currentlyDisplayedImage = pickedImage
+        let note = Note(image: pickedImage)
+        notes.append(note)
+        self.pickedImage = nil
     }
 }
 

@@ -20,16 +20,28 @@ struct ContentView: View {
 
     @State private var pickedImage: UIImage?
 
-    @State private var notes: [Note] = []
+    @State private var notes: [Note]
+
+    init(title: String, previewImages: [UIImage] = []) {
+        self.title = title
+        notes = previewImages.map { image in Note(image: image) }
+    }
 
     var body: some View {
         NavigationView {
             ScrollView {
-                LazyVGrid(columns: [.init(.adaptive(minimum: 75, maximum: 150))]) {
+                LazyVGrid(columns: [
+                    .init(.adaptive(minimum: 50, maximum: 150))
+                ]) {
                     ForEach(notes) { note in
-                        Image(uiImage: note.image)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
+                        NavigationLink.init(
+                            destination: DetailView(note: note),
+                            label: {
+                                Image(uiImage: note.image)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+
+                            })
                     }
                 }
             }
@@ -59,6 +71,15 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(title: "Whatever")
+        ContentView(
+            title: "Whatever",
+            previewImages: Array(
+                repeating: (1...5).map {
+                    number in UIImage(named: "Image \(number)")!
+                },
+                count: 5
+            )
+            .flatMap { $0 }
+        )
     }
 }

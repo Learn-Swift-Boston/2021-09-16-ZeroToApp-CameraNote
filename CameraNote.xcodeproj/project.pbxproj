@@ -12,6 +12,7 @@
 		7A9C2ACF26F40764004F01EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A9C2ACE26F40764004F01EA /* Assets.xcassets */; };
 		7A9C2AD226F40764004F01EA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A9C2AD126F40764004F01EA /* Preview Assets.xcassets */; };
 		7ADBDD3426F40A520081F40F /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADBDD3326F40A520081F40F /* ImagePicker.swift */; };
+		7ADBDD3626F41A7D0081F40F /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADBDD3526F41A7D0081F40F /* DetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		7A9C2AD126F40764004F01EA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7A9C2AD326F40764004F01EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7ADBDD3326F40A520081F40F /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		7ADBDD3526F41A7D0081F40F /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				7A9C2ACA26F40763004F01EA /* CameraNoteApp.swift */,
 				7A9C2ACC26F40763004F01EA /* ContentView.swift */,
+				7ADBDD3526F41A7D0081F40F /* DetailView.swift */,
 				7ADBDD3326F40A520081F40F /* ImagePicker.swift */,
 				7A9C2ACE26F40764004F01EA /* Assets.xcassets */,
 				7A9C2AD326F40764004F01EA /* Info.plist */,
@@ -142,6 +145,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7ADBDD3426F40A520081F40F /* ImagePicker.swift in Sources */,
+				7ADBDD3626F41A7D0081F40F /* DetailView.swift in Sources */,
 				7A9C2ACD26F40763004F01EA /* ContentView.swift in Sources */,
 				7A9C2ACB26F40763004F01EA /* CameraNoteApp.swift in Sources */,
 			);

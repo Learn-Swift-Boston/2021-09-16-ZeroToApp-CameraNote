@@ -31,23 +31,22 @@ struct ContentView: View {
         NavigationView {
             ScrollView {
                 LazyVGrid(columns: [
-                    .init(.adaptive(minimum: 50, maximum: 150))
+                    .init(.adaptive(minimum: 60, maximum: 80)),
                 ]) {
                     ForEach(notes) { note in
-                        NavigationLink.init(
-                            destination: DetailView(note: note),
-                            label: {
-                                Image(uiImage: note.image)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-
-                            })
+                        Image(uiImage: note.image)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(minWidth: 60, maxWidth: 80,
+                                   minHeight: 60, maxHeight: 80)
+                            .clipped()
                     }
                 }
             }
             .navigationTitle(title)
             .navigationBarItems(trailing: cameraButton)
         }
+        .navigationViewStyle(StackNavigationViewStyle())
         .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
             ImagePicker(image: $pickedImage)
         }
@@ -81,5 +80,34 @@ struct ContentView_Previews: PreviewProvider {
             )
             .flatMap { $0 }
         )
+        .previewDevice("iPhone 12 mini (14.5)")
+
+        Group {
+            ContentView(
+                title: "Whatever",
+                previewImages: Array(
+                    repeating: (1...5).map {
+                        number in UIImage(named: "Image \(number)")!
+                    },
+                    count: 5
+                )
+                .flatMap { $0 }
+            )
+            .previewDevice("iPhone 12 Pro Max")
+
+            ContentView(
+                title: "Whatever",
+                previewImages: Array(
+                    repeating: (1...5).map {
+                        number in UIImage(named: "Image \(number)")!
+                    },
+                    count: 5
+                )
+                .flatMap { $0 }
+            )
+            .previewDevice("iPad Pro (12.9-inch) (5th generation)")
+        }
+
+
     }
 }
